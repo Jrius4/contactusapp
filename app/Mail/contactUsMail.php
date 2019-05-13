@@ -28,6 +28,6 @@ class contactUsMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('email')->with('content',$this->content);;
+        return $this->markdown('email', ['content',$this->content]);
     }
 }

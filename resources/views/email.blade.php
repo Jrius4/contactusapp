@@ -1,4 +1,8 @@
+
+<h2>Dear Red Token Solution Admin;</h2>
+<p>
 You received a message from : {{ $first_name }}
+</p>
 <p>
 First Name: {{ $first_name }}
 </p>
@@ -12,5 +16,6 @@ Phone Number: {{ $phone_number }}
 Email: {{ $email }}
 </p>
 <p>
-Message: {{ $user_message }}
+Message:
+<p>{{ $user_message }}</p>
 </p>
