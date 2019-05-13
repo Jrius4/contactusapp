@@ -30,17 +30,6 @@ class ContactUsController extends Controller
             'message' => 'required'
         ]);
         ContactUs::create($request->all());
-        $valuearray = [
-
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'phone_number' => $request->get('phone_number'),
-            'email' => $request->get('email'),
-            'user_message' => $request->get('message')
-
-        ];
-
-        // $obj = new contactUsMail($valuearray);
 
         Mail::send(
             'email',
@@ -51,96 +40,16 @@ class ContactUsController extends Controller
                 'email' => $request->get('email'),
                 'user_message' => $request->get('message')
             ),
-            // $obj,
             function ($message) {
+                // email from which the mail are from (option)
                 $message->from('kjj1@muni.ac.ug');
+                // the receipent mail
                 $message->to('kazibwejuliusjunior@gmail.com', 'Admin')->subject('Red Token Solutions Feedback');
             }
         );
 
-
-        // Mail::send(
-        //     $obj,
-
-        //     function ($message) {
-        //         $message->from('kjj1@muni.ac.ug');
-        //         $message->to('kazibwejuliusjunior@gmail.com', 'Admin')->subject('Red Token Solutions Feedback');
-        //     }
-
-
-        // );
-
         return back()->with('success', 'Thanks for contacting us!');
     }
 
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+ 
 }
